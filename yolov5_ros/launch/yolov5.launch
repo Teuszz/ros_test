@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<launch>
+    <!-- Konfiguration der Objekterkennung -->
+    <arg name="source" default="4"/>        
+    <arg name="conf-thres" default="0.25"/>
+    <arg name="nosave" default="true"/>
+
+    <!-- Starten der Nodes "listenerDetect" und "talkerDetect" -->
+    <node pkg="yolov5_ros" name="listenerDetect" type="listenerDetect.py"  output="screen">
+    </node>
+    
+    <node pkg="yolov5_ros" name="talkerDetect" type="talkerDetectLaunch.py" args="--source $(arg source) --conf-thres $(arg conf-thres) --nosave $(arg nosave)">
+    </node>    
+</launch>
+
